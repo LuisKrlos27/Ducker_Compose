@@ -37,10 +37,6 @@ Por estas razones, la adopción de Docker creció rápidamente y continúa aumen
 
 # Mas informacion sobre docker
 
-1. [Definicion][Definicion]
-
-[Definicion]:https://github.com/LuisKrlos27/Ducker_Compose/tree/main/Definicion
-
-2. [workflow][workflow]
+1. [workflow][workflow]
 
 [Workflow]:https://github.com/LuisKrlos27/Ducker_Compose/tree/main/Workflow

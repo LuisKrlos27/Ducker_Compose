@@ -32,3 +32,69 @@ Necesita un Dockerfile para cada imagen personalizada que desee crear; también 
 El Dockerfile se coloca en la carpeta raíz de su aplicación o servicio. Contiene los comandos que le indican a Docker cómo configurar y ejecutar su aplicación o servicio en un contenedor. Puede crear manualmente un Dockerfile en código y agregarlo a su proyecto junto con sus dependencias de .NET.
 
 Con Visual Studio y sus herramientas para Docker, esta tarea requiere solo unos pocos clics del mouse. Cuando crea un nuevo proyecto en Visual Studio 2022, hay una opción llamada Habilitar compatibilidad con Docker, como se muestra en la Figura 5-3.
+
+## Step 3. Create your custom Docker images and embed your application or service in them.
+
+![logo_4](img/WhatsApp%20Image%202022-10-15%20at%204.25.08%20PM.jpeg)
+
+Para cada servicio de su aplicación, debe crear una imagen relacionada. Si su aplicación se compone de un solo servicio o aplicación web, solo necesita una sola imagen.
+
+Tenga en cuenta que las imágenes de Docker se crean automáticamente en Visual Studio. Los siguientes pasos solo son necesarios para el flujo de trabajo del editor/CLI y se explican para aclarar lo que sucede debajo.
+
+Usted, como desarrollador, necesita desarrollar y probar localmente hasta que envíe una característica completa o cambie su sistema de control de fuente (por ejemplo, a GitHub). Esto significa que debe crear las imágenes de Docker e implementar contenedores en un host de Docker local (VM de Windows o Linux) y ejecutar, probar y depurar en esos contenedores locales.
+
+Para crear una imagen personalizada en su entorno local mediante la CLI de Docker y su Dockerfile, puede usar el comando de compilación de docker, como se muestra en la Figura 5-5.
+
+## Step 4. Define your services in docker-compose.yml when building a multi-container Docker application.
+
+![logo_5](img/WhatsApp%20Image%202022-10-15%20at%204.28.19%20PM.jpeg)
+
+El archivo docker-compose.yml le permite definir un conjunto de servicios relacionados que se implementarán como una aplicación compuesta con comandos de implementación. También configura sus relaciones de dependencia y la configuración del tiempo de ejecución.
+
+Para usar un archivo docker-compose.yml, debe crear el archivo en su carpeta de solución principal o raíz, con un contenido similar al del siguiente ejemplo:
+
+version: '3.4'
+
+services:
+
+  webmvc:
+    image: eshop/web
+    environment:
+      - CatalogUrl=http://catalog-api
+      - OrderingUrl=http://ordering-api
+    ports:
+      - "80:80"
+    depends_on:
+      - catalog-api
+      - ordering-api
+
+  catalog-api:
+    image: eshop/catalog-api
+    environment:
+      - ConnectionString=Server=sqldata;Port=1433;Database=CatalogDB;…
+    ports:
+      - "81:80"
+    depends_on:
+      - sqldata
+
+  ordering-api:
+    image: eshop/ordering-api
+    environment:
+      - ConnectionString=Server=sqldata;Database=OrderingDb;…
+    ports:
+      - "82:80"
+    extra_hosts:
+      - "CESARDLBOOKVHD:10.0.75.1"
+    depends_on:
+      - sqldata
+
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:latest
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"
+
+## Step 5. Build and run your Docker application.
+
