@@ -41,6 +41,6 @@ Por estas razones, la adopción de Docker creció rápidamente y continúa aumen
 
 [Workflow]:https://github.com/LuisKrlos27/Ducker_Compose/tree/main/Workflow
 
-2.[Instalacion][instalcion]
+2. [Instalacion][instalcion]
 
-[instalcion]:
+[instalcion]:https://github.com/LuisKrlos27/Ducker_Compose/tree/main/Instalacion
