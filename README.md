@@ -34,10 +34,13 @@ Hoy en día, la contenerización de Docker también funciona con el servidor Mic
 
 Por estas razones, la adopción de Docker creció rápidamente y continúa aumentando. En este artículo, Docker Inc. informa 11 millones de desarrolladores y 13 mil millones de descargas de imágenes de contenedores cada mes (enlace externo a IBM).
 
+
+# Mas informacion sobre docker
+
 1. [Definicion][Definicion]
 
 [Definicion]:https://github.com/LuisKrlos27/Ducker_Compose/tree/main/Definicion
 
-1. [workflow][workflow]
+2. [workflow][workflow]
 
 [Workflow]:https://github.com/LuisKrlos27/Ducker_Compose/tree/main/Workflow
