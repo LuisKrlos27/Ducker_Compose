@@ -98,3 +98,15 @@ services:
 
 ## Step 5. Build and run your Docker application.
 
+![logo_6](img/WhatsApp%20Image%202022-10-15%20at%204.30.49%20PM.jpeg)
+
+Si su aplicación solo tiene un único contenedor, puede ejecutarlo implementándolo en su host Docker (VM o servidor físico). Sin embargo, si su aplicación contiene varios servicios, puede implementarla como una aplicación compuesta, ya sea usando un solo comando CLI (docker-compose up) o con Visual Studio, que usará ese comando en secreto. Veamos las diferentes opciones.
+
+## Step 6. Test your Docker application using your local Docker host.
+
+![logo_7](img/WhatsApp%20Image%202022-10-15%20at%204.36.08%20PM.jpeg)
+
+Este paso variará dependiendo de lo que esté haciendo su aplicación. En una aplicación web .NET simple que se implementa como un único contenedor o servicio, puede acceder al servicio abriendo un navegador en el host de Docker y navegando a ese sitio, como se muestra en la Figura 5-13. (Si la configuración en el Dockerfile asigna el contenedor a un puerto en el host que no sea 80, incluya el puerto del host en la URL).
+
+
+
